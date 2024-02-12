@@ -63,7 +63,7 @@ const router = new VueRouter({
           },
         ],
         requiresAuth: true,
-        permission: "show_flats",
+        permission: "show_officer_property",
       },
     },
     {

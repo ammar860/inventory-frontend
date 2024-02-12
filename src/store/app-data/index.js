@@ -53,7 +53,7 @@ export default {
           route: "Role",
         });
       }
-      if (state.user.permissions.hasOwnProperty("show_flats")) {
+      if (state.user.permissions.hasOwnProperty("show_officer_property")) {
         state.navMenuItems.push({
           title: "Offrs Property",
           icon: "UsersIcon",
