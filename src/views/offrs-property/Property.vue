@@ -46,6 +46,11 @@
                         row.item.updated_by_data ? row.item.updated_by_data.username : ""
                     }}
                 </template>
+                <template #cell(type)="row">
+                    {{
+                        propertyTypesNames(row.item.type)
+                    }}
+                </template>
                 <template #cell(image)="row">
                     <b-img :src="row.item.image" alt="image" height="100" />
                 </template>
@@ -94,6 +99,7 @@ export default {
                 { key: "house_no", label: "House No" },
                 { key: "loc", label: "Loc" },
                 { key: "unit", label: "Unit" },
+                { key: "type", label: "Type" },
                 // { key: "created_at", label: "Created At" },
                 // { key: "created_by_data", label: "Created By" },
                 // { key: "updated_at", label: "Updated At" },

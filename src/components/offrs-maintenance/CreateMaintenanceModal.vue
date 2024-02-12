@@ -104,11 +104,11 @@ export default {
                 // });
                 if (res.status === 201) {
                     this.$swal({
-                        title: "Property created successfully",
+                        title: "Property Maintenance created successfully",
                         icon: "success",
                     });
                     this.$nextTick(() => {
-                        this.$bvModal.hide("create-officer-property-modal");
+                        this.$bvModal.hide("create-officer-maintenance-modal");
                     });
                     this.$emit("modalClosed");
                 }

@@ -87,6 +87,10 @@ export default {
 
         },
         async onModalClosed() {
+            this.$nextTick(() => {
+                this.$bvModal.hide("officer-maintenance-show-modal");
+            });
+            this.$emit("modalClosed");
             // await this.fetchPaginatedData();
         },
         // async submit() {

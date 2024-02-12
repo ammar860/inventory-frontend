@@ -58,7 +58,29 @@
                         </b-form-group>
                     </b-col>
                 </b-form-row>
-                <!-- <b-form-file v-model="image" class="mt-1" plain accept="image/*" /> -->
+                <b-form-row>
+                    <b-col md="6">
+                        <b-form-group label-for="loc">
+                            <template #label>
+                                Type <span class="text-danger">*</span>
+                            </template>
+                            <validation-provider #default="{ errors }" name="type" :rules="{ required }">
+                                <b-form-select id="type" v-model="type" :options="propertyTypesOptions"
+                                    :state="errors.length > 0 ? false : null" placeholder="type"
+                                    text-field="name"></b-form-select>
+                                <small class="text-danger">{{ errors[0] }}</small>
+                            </validation-provider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label-for="image">
+                            <template #label>
+                                Image <span class="text-danger">*</span>
+                            </template>
+                            <b-form-file v-model="image" class="mt-1" plain accept="image/*" />
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
             </b-form>
         </validation-observer>
         <template #modal-footer>
@@ -89,6 +111,7 @@ export default {
             house_no: "",
             loc: "",
             unit: "",
+            type: "",
             image: null,
             required,
         };
@@ -107,26 +130,28 @@ export default {
         async submit() {
             try {
 
-                // let formData = new FormData();
+                let formData = new FormData();
 
-                // formData.append("name", this.name);
-                // formData.append("house_no", this.house_no);
-                // formData.append("unit", this.unit);
-                // formData.append("loc", this.loc);
-                // formData.append("updated_by", this.getLoggedInUser.id);
-                // formData.append("created_by", this.getLoggedInUser.id);
-                // formData.append("image", this.image);
-                // console.log('formData', formData);
-                // const res = await this.createOfficerProperty(formData);
+                formData.append("name", this.name);
+                formData.append("house_no", this.house_no);
+                formData.append("unit", this.unit);
+                formData.append("loc", this.loc);
+                formData.append("type", this.type);
+                formData.append("updated_by", this.getLoggedInUser.id);
+                formData.append("created_by", this.getLoggedInUser.id);
+                formData.append("image", this.image);
+                console.log('formData', formData);
+                const res = await this.createOfficerProperty(formData);
 
-                const res = await this.createOfficerProperty({
-                    name: this.name,
-                    house_no: this.house_no,
-                    loc: this.loc,
-                    unit: this.unit,
-                    created_by: this.getLoggedInUser.id,
-                    updated_by: this.getLoggedInUser.id,
-                });
+                // const res = await this.createOfficerProperty({
+                //     name: this.name,
+                //     house_no: this.house_no,
+                //     loc: this.loc,
+                //     unit: this.unit,
+                //     type: this.type,
+                //     created_by: this.getLoggedInUser.id,
+                //     updated_by: this.getLoggedInUser.id,
+                // });
                 if (res.status === 201) {
                     this.$swal({
                         title: "Property created successfully",

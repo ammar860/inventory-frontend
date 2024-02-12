@@ -21,18 +21,16 @@ const util = {
       getDateString(date) {
         return moment(date).format("Do MMMM YYYY on HH:mm");
       },
-      caseStatus: {
-        PENDING: 1,
-        PROCESSING: 2,
-        FINALIZED: 3,
-        CLOSED: 4,
+      propertyTypes: {
+        MOQ: 1,
+        HOUSE: 2,
+        FLAT: 3,
       },
 
-      statusOptions: [
-        { value: 1, name: "Pending" },
-        { value: 2, name: "Processing" },
-        { value: 3, name: "Finalized" },
-        { value: 4, name: "Closed" },
+      propertyTypesOptions: [
+        { value: 1, name: "MOQ" },
+        { value: 2, name: "HOUSE" },
+        { value: 3, name: "FLAT" },
 
       ],
       statusName: {
@@ -128,20 +126,17 @@ const util = {
     getMember(obj) {
       return obj.name ? obj.name : "";
     },
-    statusNames(status) {
+    propertyTypesNames(type) {
       let name = "";
-      switch (status) {
+      switch (type) {
         case 1:
-          name = "Pending";
+          name = "MOQ";
           break;
         case 2:
-          name = "Processing";
+          name = "HOUSE";
           break;
         case 3:
-          name = "Finalized";
-          break;
-        case 4:
-          name = "Closed";
+          name = "FLAT";
           break;
       }
       return name;
