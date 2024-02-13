@@ -4,51 +4,48 @@ import moment from "moment";
 const util = {
   data() {
     return {
-      modes: {
-        CREATE: 1,
-        EDIT: 2,
-      },
-      rankCategories: [
-        { value: 1, text: "General Officer" },
-        { value: 2, text: "Senior Officer" },
-        { value: 3, text: "Officer" },
-        { value: 4, text: "Soldier" },
-      ],
-      rankCategory(category) {
-        const cat = this.rankCategories.find((cat) => cat.value === category);
-        return cat.text;
-      },
+    
       getDateString(date) {
         return moment(date).format("Do MMMM YYYY on HH:mm");
       },
-      propertyTypes: {
+
+      officerPropertyTypes: {
         MOQ: 1,
         HOUSE: 2,
         FLAT: 3,
       },
-
-      propertyTypesOptions: [
+      officerPropertyTypesOptions: [
         { value: 1, name: "MOQ" },
         { value: 2, name: "HOUSE" },
         { value: 3, name: "FLAT" },
 
       ],
-      statusName: {
-        1: { value: 1, name: "Pending" },
-        2: { value: 2, name: "Processing" },
-        3: { value: 3, name: "Finalized" },
-        4: { value: 4, name: "Closed" },
-
+      soldierPropertyTypes: {
+        JCO: 1,
+        SOLDIER: 2,
+        NCsE: 3,
       },
+      soldierPropertyTypesOptions: [
+        { value: 1, name: "JCO" },
+        { value: 2, name: "SOLDIER" },
+        { value: 3, name: "NCsE" },
+
+      ],
+
+      nonResidentialPropertyTypes: {
+        SM_BARAK: 1,
+        MT_SHED: 2,
+        PARK_FUTSAL: 3,
+      },
+      nonResidentialPropertyTypesOptions: [
+        { value: 1, name: "SM BARRAK" },
+        { value: 2, name: "MT SHED" },
+        { value: 3, name: "PAEK / FUTSAL" },
+
+      ],
+ 
       searchTypes: [
         { value: 1, name: "Token No" },
-        { value: 2, name: "Status" },
-        { value: 3, name: "Start Date" },
-        { value: 4, name: "Completion Date" },
-        { value: 5, name: "President" },
-        { value: 6, name: "Ordered By" },
-        { value: 7, name: "Remarks" },
-        { value: 8, name: "Recom" },
       ],
       categoryColors: {
         1: "table-info",
@@ -126,7 +123,7 @@ const util = {
     getMember(obj) {
       return obj.name ? obj.name : "";
     },
-    propertyTypesNames(type) {
+    OfficerPropertyTypesNames(type) {
       let name = "";
       switch (type) {
         case 1:
@@ -137,6 +134,36 @@ const util = {
           break;
         case 3:
           name = "FLAT";
+          break;
+      }
+      return name;
+    },
+    SoldierPropertyTypesNames(type) {
+      let name = "";
+      switch (type) {
+        case 1:
+          name = "JCO";
+          break;
+        case 2:
+          name = "SOLDIER";
+          break;
+        case 3:
+          name = "NCsE";
+          break;
+      }
+      return name;
+    },
+    NonResidentialPropertyTypesNames(type) {
+      let name = "";
+      switch (type) {
+        case 1:
+          name = "SM BARRAK";
+          break;
+        case 2:
+          name = "MT SHED";
+          break;
+        case 3:
+          name = "PARK / FUTSAL";
           break;
       }
       return name;

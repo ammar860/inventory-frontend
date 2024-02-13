@@ -48,7 +48,7 @@
                 </template>
                 <template #cell(type)="row">
                     {{
-                        propertyTypesNames(row.item.type)
+                        NonResidentialPropertyTypesNames(row.item.type)
                     }}
                 </template>
                 <template #cell(image)="row">

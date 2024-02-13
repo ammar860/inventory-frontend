@@ -65,7 +65,7 @@
                                 Type <span class="text-danger">*</span>
                             </template>
                             <validation-provider #default="{ errors }" name="type" :rules="{ required }">
-                                <b-form-select id="type" v-model="type" :options="propertyTypesOptions"
+                                <b-form-select id="type" v-model="type" :options="officerPropertyTypesOptions"
                                     :state="errors.length > 0 ? false : null" placeholder="type"
                                     text-field="name"></b-form-select>
                                 <small class="text-danger">{{ errors[0] }}</small>
