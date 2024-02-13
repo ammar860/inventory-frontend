@@ -3,7 +3,7 @@
         <b-modal id="officer-maintenance-show-modal" centered size="xl" hide-footer :no-close-on-esc="true"
             :no-close-on-backdrop="true" dialog-class="my-dialog-class">
             <template #modal-title>
-                <h2 class="m-0 text-primary"> Officer Maintenance Record</h2>
+                <h2 class="m-0 text-primary">Soldier Maintenance Record</h2>
             </template>
             <div>
                 <div class="text-right mb-1">
@@ -33,7 +33,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import CreateMaintenanceModal from "@/components/offrs-maintenance/CreateMaintenanceModal.vue";
+import CreateMaintenanceModal from "@/components/sldr-maintenance/CreateMaintenanceModal.vue";
 import { required } from "@validations";
 import util from "@/util.js";
 

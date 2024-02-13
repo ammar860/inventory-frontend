@@ -2,9 +2,9 @@
   <b-modal id="edit-officer-property-modal" centered size="lg" :no-close-on-esc="true" :no-close-on-backdrop="true"
     dialog-class="my-dialog-class">
     <template #modal-title>
-      <h2 class="m-0 text-primary">Edit Officer Property</h2>
+      <h2 class="m-0 text-primary">Edit Soldier Property</h2>
     </template>
-    <validation-observer ref="editOfficerPropertyFormValidation">
+    <validation-observer ref="editOfficerSoldierFormValidation">
       <b-form @submit.prevent>
         <b-form-row>
           <b-col md="6">
@@ -21,11 +21,11 @@
           <b-col md="6">
             <b-form-group label-for="house_no">
               <template #label>
-                House no <span class="text-danger">*</span>
+                Quarter no <span class="text-danger">*</span>
               </template>
               <validation-provider #default="{ errors }" name="house_no" :rules="{ required }">
-                <b-form-input id="house_no" v-model="house_no" :state="errors.length > 0 ? false : null"
-                  placeholder="House no" />
+                <b-form-input id="house_no" v-model="qtr_no" :state="errors.length > 0 ? false : null"
+                  placeholder="Quarter no" />
                 <small class="text-danger">{{ errors[0] }}</small>
               </validation-provider>
             </b-form-group>
@@ -86,7 +86,7 @@ export default {
   data() {
     return {
       name: "",
-      house_no: "",
+      qtr_no: "",
       loc: "",
       unit: "",
       image: null,
@@ -96,7 +96,7 @@ export default {
   async mounted() {
     if (this.property) {
       this.name = this.property.name;
-      this.house_no = this.property.house_no;
+      this.qtr_no = this.property.qtr_no;
       this.loc = this.property.loc;
       this.unit = this.property.unit;
       this.image = this.property.image;
@@ -105,10 +105,10 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateOfficerProperty: "appData/updateOfficerProperty",
+      updateSoldierProperty: "appData/updateSoldierProperty",
     }),
     async validationForm() {
-      const success = await this.$refs.editOfficerPropertyFormValidation.validate();
+      const success = await this.$refs.editOfficerSoldierFormValidation.validate();
       if (success) {
         await this.submit();
       }
@@ -119,14 +119,14 @@ export default {
         let formData = new FormData();
 
         formData.append("name", this.name);
-        formData.append("house_no", this.house_no);
+        formData.append("qtr_no", this.qtr_no);
         formData.append("unit", this.unit);
         formData.append("loc", this.loc);
         formData.append("updated_by", this.getLoggedInUser.id);
         formData.append("image", this.image);
         console.log('formData', formData);
 
-        const res = await this.updateOfficerProperty({
+        const res = await this.updateSoldierProperty({
           payload: formData,
           // {
           //   name: this.name,

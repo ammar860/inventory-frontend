@@ -2,9 +2,9 @@
     <b-modal id="create-officer-maintenance-modal" centered size="lg" :no-close-on-esc="true" :no-close-on-backdrop="true"
         dialog-class="my-dialog-class">
         <template #modal-title>
-            <h2 class="m-0 text-primary">Create Officer Maintenance</h2>
+            <h2 class="m-0 text-primary">Create Non Resdendial Maintenance</h2>
         </template>
-        <validation-observer ref="createOfficerMaintainanceFormValidation">
+        <validation-observer ref="createNonResidendialMaintainanceFormValidation">
             <b-form @submit.prevent>
                 <b-form-row>
                     <b-col md="6">
@@ -70,11 +70,11 @@ export default {
     },
     methods: {
         ...mapActions({
-            createOfficerMaintenance: "appData/createOfficerMaintenance",
+            createNonResidendialMaintenance: "appData/createNonResidendialMaintenance",
             getPermissions: "appData/getPermissions",
         }),
         async validationForm() {
-            const success = await this.$refs.createOfficerMaintainanceFormValidation.validate();
+            const success = await this.$refs.createNonResidendialMaintainanceFormValidation.validate();
             if (success) {
                 await this.submit();
             }
@@ -92,7 +92,7 @@ export default {
                 formData.append("created_by", this.getLoggedInUser.id);
                 formData.append("image", this.image);
                 console.log('formData', formData);
-                const res = await this.createOfficerMaintenance(formData);
+                const res = await this.createNonResidendialMaintenance(formData);
 
                 // const res = await this.createOfficerProperty({
                 //     name: this.name,

@@ -51,8 +51,8 @@ const router = new VueRouter({
       },
     },
     {
-      path: "/flats",
-      name: "Flats",
+      path: "/offrs-property",
+      name: "OfficerProperty",
       component: () => import("@/views/offrs-property/Property.vue"),
       meta: {
         pageTitle: "Offrs Property",
@@ -64,6 +64,38 @@ const router = new VueRouter({
         ],
         requiresAuth: true,
         permission: "show_officer_property",
+      },
+    },
+    {
+      path: "/sldr-property",
+      name: "SoldierProperty",
+      component: () => import("@/views/sldr-property/Property.vue"),
+      meta: {
+        pageTitle: "Sldr Property",
+        breadcrumb: [
+          {
+            text: "Property",
+            active: true,
+          },
+        ],
+        requiresAuth: true,
+        permission: "show_soldier_property",
+      },
+    },
+    {
+      path: "/non-residential-property",
+      name: "NonResidentialProperty",
+      component: () => import("@/views/non-resdl-property/Property.vue"),
+      meta: {
+        pageTitle: "Non Residential Property",
+        breadcrumb: [
+          {
+            text: "Property",
+            active: true,
+          },
+        ],
+        requiresAuth: true,
+        permission: "show_non_residential_property",
       },
     },
     {
