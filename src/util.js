@@ -40,7 +40,7 @@ const util = {
       nonResidentialPropertyTypesOptions: [
         { value: 1, name: "SM BARRAK" },
         { value: 2, name: "MT SHED" },
-        { value: 3, name: "PAEK / FUTSAL" },
+        { value: 3, name: "PARK / FUTSAL" },
 
       ],
  
