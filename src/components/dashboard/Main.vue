@@ -45,22 +45,15 @@ export default {
     mixins: [util],
     data() {
         return {
-            series: [44, 55, 41, 17, 15],
+            series: [44, 55, 41],
             chartOptions: {
                 chart: {
                     type: 'donut',
                 },
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 200
-                        },
-                        legend: {
-                            position: 'top'
-                        }
-                    }
-                }]
+                labels: ['Team A', 'Team B', 'Team C'],
+                legend: {
+                    position: "bottom",
+                },
             },
         };
     },
