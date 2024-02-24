@@ -38,6 +38,14 @@ export default {
     setNavMenuItems(state) {
       state.navMenuItems = [];
 
+      if (state.user.permissions.hasOwnProperty("dashboard_show")) {
+        state.navMenuItems.push({
+          title: "Dashboard",
+          route: "Dashboard",
+          icon: "HomeIcon",
+        });
+      }
+
       if (state.user.permissions.hasOwnProperty("show_user")) {
         state.navMenuItems.push({
           title: "User",

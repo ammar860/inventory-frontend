@@ -19,6 +19,15 @@ const router = new VueRouter({
       },
     },
     {
+      path: "/dashboard",
+      name: "Dashboard",
+      component: () => import("@/views/dashboard/Dashboard.vue"),
+      meta: {
+        layout: "full",
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/user",
       name: "User",
       component: () => import("@/views/user/User.vue"),
@@ -80,6 +89,22 @@ const router = new VueRouter({
         ],
         requiresAuth: true,
         permission: "show_soldier_property",
+      },
+    },
+    {
+      path: "/non-residential-property",
+      name: "NonResidentialProperty",
+      component: () => import("@/views/non-resdl-property/Property.vue"),
+      meta: {
+        pageTitle: "Non Residential Property",
+        breadcrumb: [
+          {
+            text: "Property",
+            active: true,
+          },
+        ],
+        requiresAuth: true,
+        permission: "show_non_residential_property",
       },
     },
     {
