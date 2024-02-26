@@ -64,7 +64,7 @@ const router = new VueRouter({
       name: "OfficerProperty",
       component: () => import("@/views/offrs-property/Property.vue"),
       meta: {
-        pageTitle: "Offrs Property",
+        pageTitle: "Offrs ACCOMM",
         breadcrumb: [
           {
             text: "Property",
@@ -80,7 +80,7 @@ const router = new VueRouter({
       name: "SoldierProperty",
       component: () => import("@/views/sldr-property/Property.vue"),
       meta: {
-        pageTitle: "Sldr Property",
+        pageTitle: "Sldr ACCOMM",
         breadcrumb: [
           {
             text: "Property",
@@ -91,28 +91,28 @@ const router = new VueRouter({
         permission: "show_soldier_property",
       },
     },
+    // {
+    //   path: "/non-residential-property",
+    //   name: "NonResidentialProperty",
+    //   component: () => import("@/views/non-resdl-property/Property.vue"),
+    //   meta: {
+    //     pageTitle: "Non Residential Property",
+    //     breadcrumb: [
+    //       {
+    //         text: "Property",
+    //         active: true,
+    //       },
+    //     ],
+    //     requiresAuth: true,
+    //     permission: "show_non_residential_property",
+    //   },
+    // },
     {
       path: "/non-residential-property",
       name: "NonResidentialProperty",
       component: () => import("@/views/non-resdl-property/Property.vue"),
       meta: {
-        pageTitle: "Non Residential Property",
-        breadcrumb: [
-          {
-            text: "Property",
-            active: true,
-          },
-        ],
-        requiresAuth: true,
-        permission: "show_non_residential_property",
-      },
-    },
-    {
-      path: "/non-residential-property",
-      name: "NonResidentialProperty",
-      component: () => import("@/views/non-resdl-property/Property.vue"),
-      meta: {
-        pageTitle: "Non Residential Property",
+        pageTitle: "Non Residential ACCOMM",
         breadcrumb: [
           {
             text: "Property",

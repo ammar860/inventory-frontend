@@ -7,7 +7,7 @@
             </b-button>
         </div>
         <b-card>
-            <!-- <b-row class="mb-1" align-v="center">
+            <b-row class="mb-1" align-v="center">
                 <b-col md="7">
                     <div v-if="searchType">
                         <b-form-group label="Name" label-for="name" class="w-50" v-if="searchType.value === 1">
@@ -33,7 +33,7 @@
                         <span class="align-middle">Search</span>
                     </b-button>
                 </b-col>
-            </b-row> -->
+            </b-row>
             <b-table responsive="sm" :fields="fields" :items="properties" details-td-class="m-0 p-0" small
                 v-if="hasPermission('read_role')" :per-page="0">
                 <template #cell(created_by_data)="row">

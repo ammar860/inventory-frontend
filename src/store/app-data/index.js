@@ -63,20 +63,20 @@ export default {
       }
       if (state.user.permissions.hasOwnProperty("show_officer_property")) {
         state.navMenuItems.push({
-          title: "Offrs Property",
+          title: "Offrs ACCOMM",
           icon: "UsersIcon",
           route: "OfficerProperty",
         });
         if (state.user.permissions.hasOwnProperty("show_soldier_property")) {
           state.navMenuItems.push({
-            title: "Sldrs Property",
+            title: "Sldrs ACCOMM",
             icon: "UsersIcon",
             route: "SoldierProperty",
           });
         }
         if (state.user.permissions.hasOwnProperty("show_non_residential_property")) {
           state.navMenuItems.push({
-            title: "Non Resdl Property",
+            title: "Non Resdl ACCOMM",
             icon: "UsersIcon",
             route: "NonResidentialProperty",
           });
@@ -196,18 +196,10 @@ export default {
       return res;
     },
 
-
-
-
-
-
-
-
-
-
-
-
-
+    async getDashboardData({ commit }) {
+      const res = await axiosIns.get(`dashboard`);
+      return res;
+    },
 
     async getSoldierProperties({ commit }, { pageNumber, name, codeName }) {
       let url = `soldier-properties/?page=${pageNumber}`;
@@ -333,7 +325,7 @@ export default {
       const res = await axiosIns.get(url);
       return res;
     },
-    async updateUser({ commit }, {payload,pk}) {
+    async updateUser({ commit }, { payload, pk }) {
       const res = await axiosIns.put(`users/${pk}/`, payload);
       return res;
     },

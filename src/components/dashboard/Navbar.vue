@@ -4,7 +4,7 @@
       <b-link class="text-white my-nav-item my-nav-link d-flex align-items-center" :to="{ name: 'OfficerProperty' }"
         v-if="hasPermission('show_officer_property')">
         <feather-icon icon="HomeIcon" size="16" class="mr-50 text-white" />
-        <span>Offrs Property</span>
+        <span>Home</span>
       </b-link>
     </div>
   </div>

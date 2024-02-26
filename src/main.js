@@ -81,7 +81,7 @@ function createBeforeEach() {
           if (store.getters["appData/hasPermission"](to.meta.permission)) {
             next();
           } else {
-            next({ name: "User" });
+            next({ name: "OfficerProperty" });
           }
         } else {
           next();
@@ -96,7 +96,7 @@ function createBeforeEach() {
       !to.matched.some((record) => record.meta.requiresAuth) &&
       store.getters["appData/isLoggedIn"]
     ) {
-      next({ name: "User" });
+      next({ name: "OfficerProperty" });
     } else {
       next();
     }

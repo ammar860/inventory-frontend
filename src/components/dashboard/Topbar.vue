@@ -1,7 +1,6 @@
 <template>
     <div style="height: 8%">
         <div class="d-flex justify-content-center align-items-center h-100 bg-white px-2">
-            <h5 class="mb-0">Functional since 9th Oct 2023</h5>
 
             <div class="d-flex justify-content-center align-items-center mx-auto">
                 <span class="brand-logo">
