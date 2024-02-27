@@ -4,7 +4,9 @@ module.exports = {
   devServer: {
     host: "localhost",
   },
-  publicPath: "",
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/static/'  // Your desired base URL
+    : '/',
   lintOnSave: false,
   css: {
     loaderOptions: {
