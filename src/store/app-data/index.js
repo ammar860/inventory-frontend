@@ -140,17 +140,27 @@ export default {
     },
 
 
-    async getOfficerProperties({ commit }, { pageNumber, name, codeName }) {
+    async getOfficerProperties({ commit }, { pageNumber, name, loc, unit, type }) {
+
+
+
       let url = `officer-properties/?page=${pageNumber}`;
       if (name) {
         url += `&name=${name}`;
       }
-      if (codeName) {
-        url += `&code_name=${codeName}`;
+      if (loc) {
+        url += `&loc=${loc}`;
+      }
+      if (unit) {
+        url += `&unit=${unit}`;
+      }
+      if (type) {
+        url += `&type=${type}`;
       }
       const res = await axiosIns.get(url);
       return res;
     },
+
     async getOfficerProperty({ commit }, { pk }) {
       const res = await axiosIns.get(`officer-properties/${pk}/`);
       return res;
@@ -201,14 +211,21 @@ export default {
       return res;
     },
 
-    async getSoldierProperties({ commit }, { pageNumber, name, codeName }) {
+    async getSoldierProperties({ commit }, { pageNumber, name, loc, unit, type }) {
       let url = `soldier-properties/?page=${pageNumber}`;
       if (name) {
         url += `&name=${name}`;
       }
-      if (codeName) {
-        url += `&code_name=${codeName}`;
+      if (loc) {
+        url += `&loc=${loc}`;
       }
+      if (unit) {
+        url += `&unit=${unit}`;
+      }
+      if (type) {
+        url += `&type=${type}`;
+      }
+
       const res = await axiosIns.get(url);
       return res;
     },
@@ -256,13 +273,19 @@ export default {
       const res = await axiosIns.delete(`soldier-maintenances/${pk}/`);
       return res;
     },
-    async getNonResidendialProperties({ commit }, { pageNumber, name, codeName }) {
+    async getNonResidendialProperties({ commit }, { pageNumber, name, unit, loc, type }) {
       let url = `non-residential-properties/?page=${pageNumber}`;
       if (name) {
         url += `&name=${name}`;
       }
-      if (codeName) {
-        url += `&code_name=${codeName}`;
+      if (loc) {
+        url += `&loc=${loc}`;
+      }
+      if (unit) {
+        url += `&unit=${unit}`;
+      }
+      if (type) {
+        url += `&type=${type}`;
       }
       const res = await axiosIns.get(url);
       return res;

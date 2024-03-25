@@ -16,15 +16,23 @@
                             </b-input-group>
                             <b-form-input id="name" v-model="name" placeholder="Name" />
                         </b-form-group>
-                        <b-form-group label="Code Name" label-for="codeName" class="w-50" v-if="searchType.value === 2">
-                            <b-form-input id="codeName" v-model="codeName" placeholder="Code Name" />
+                        <b-form-group label="Unit" label-for="codeName" class="w-50" v-if="searchType.value === 2">
+                            <b-form-input id="codeName" v-model="unit" placeholder="unit" />
+                        </b-form-group>
+                        <b-form-group label="LOC" label-for="codeName" class="w-50" v-if="searchType.value === 3">
+                            <b-form-input id="codeName" v-model="loc" placeholder="LOC" />
+                        </b-form-group>
+
+                        <b-form-group label="Type" label-for="status" class="w-50" v-if="searchType.value === 4">
+                            <v-select id="status" v-model="type" :options="nonResidentialPropertyTypesOptions"
+                                placeholder="Type" label="name" />
                         </b-form-group>
                     </div>
                 </b-col>
                 <b-col md="3">
                     <b-form-group label="Search Type" label-for="searchType">
-                        <v-select id="searchType" v-model="searchType" :options="searchTypes" placeholder="Search Type"
-                            label="name" />
+                        <v-select id="searchType" v-model="searchType" :options="searchTypesNonResidential"
+                            placeholder="Search Type" label="name" />
                     </b-form-group>
                 </b-col>
                 <b-col md="2">
@@ -38,17 +46,17 @@
                 v-if="hasPermission('read_role')" :per-page="0">
                 <template #cell(created_by_data)="row">
                     {{
-                        row.item.created_by_data ? row.item.created_by_data.username : ""
+                    row.item.created_by_data ? row.item.created_by_data.username : ""
                     }}
                 </template>
                 <template #cell(updated_by_data)="row">
                     {{
-                        row.item.updated_by_data ? row.item.updated_by_data.username : ""
+                    row.item.updated_by_data ? row.item.updated_by_data.username : ""
                     }}
                 </template>
                 <template #cell(type)="row">
                     {{
-                        NonResidentialPropertyTypesNames(row.item.type)
+                    NonResidentialPropertyTypesNames(row.item.type)
                     }}
                 </template>
                 <template #cell(image)="row">
@@ -116,13 +124,11 @@ export default {
             createOfficerPropertyModalCount: 0,
             editOfficerPropertyModalCount: 0,
             maintenanceShowModalCount: 0,
-            searchTypes: [
-                { value: 1, name: "Name" },
-                { value: 2, name: "Code Name" },
-            ],
             searchType: null,
             name: "",
-            codeName: "",
+            loc: "",
+            unit: "",
+            type: "",
 
         };
     },
@@ -143,15 +149,31 @@ export default {
             if (this.searchType) {
                 switch (this.searchType.value) {
                     case 1:
-                        this.codeName = "";
+                        this.type = "";
+                        this.loc = "";
+                        this.unit = "";
                         break;
                     case 2:
                         this.name = "";
+                        this.type = "";
+                        this.loc = "";
+                        break;
+                    case 3:
+                        this.type = "";
+                        this.name = "";
+                        this.unit = "";
+                        break;
+                    case 4:
+                        this.name = "";
+                        this.loc = "";
+                        this.unit = "";
                         break;
                 }
             } else {
                 this.name = "";
-                this.codeName = "";
+                this.loc = "";
+                this.unit = "";
+                this.type = "";
             }
             this.currentPage = 1;
             await this.fetchPaginatedData();
@@ -160,8 +182,10 @@ export default {
             try {
                 const res = await this.getNonResidendialProperties({
                     pageNumber: this.currentPage,
-                    // name: this.name,
-                    // codeName: this.codeName,
+                    name: this.name,
+                    unit: this.unit,
+                    loc: this.loc,
+                    type: this.type ? this.type.value : null,
                 });
                 this.properties = res.data.results;
                 this.totalItems = res.data.count;

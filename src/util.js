@@ -20,6 +20,7 @@ const util = {
         { value: 3, name: "FLAT" },
 
       ],
+      
       soldierPropertyTypes: {
         JCO: 1,
         SOLDIER: 2,
@@ -44,8 +45,23 @@ const util = {
 
       ],
  
-      searchTypes: [
-        { value: 1, name: "Token No" },
+      searchTypesOfficers: [
+        { value: 1, name: "Name" },
+        { value: 2, name: "Unit" },
+        { value: 3, name: "LOC" },
+        { value: 4, name: "Type" },
+      ],
+      searchTypesSoldiers: [
+        { value: 1, name: "Name" },
+        { value: 2, name: "Unit" },
+        { value: 3, name: "LOC" },
+        { value: 4, name: "Type" },
+      ],
+      searchTypesNonResidential: [
+        { value: 1, name: "Name" },
+        { value: 2, name: "Unit" },
+        { value: 3, name: "LOC" },
+        { value: 4, name: "Type" },
       ],
       categoryColors: {
         1: "table-info",
